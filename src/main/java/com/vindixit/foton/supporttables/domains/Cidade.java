@@ -13,15 +13,15 @@ import javax.persistence.TableGenerator;
 
 
 @Table(name="TBL_CIDADE")
+@SequenceGenerator(name="tbl_cidade_id_cidade_seq", sequenceName="tbl_cidade_id_cidade_seq",initialValue=1, allocationSize=1)
 @Entity
 public class Cidade implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "tbl_cidade_id_cidade_seq")
 	@Column(name="id_cidade")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "id_cidade")
-	@TableGenerator( name = "id_cidade", allocationSize = 1, initialValue = 1)
 	Integer idCidade;
 	
 	@Column(name="dc_temperatura")
