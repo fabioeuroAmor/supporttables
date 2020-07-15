@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 import com.vindixit.foton.supporttables.domains.Cidade;
 import com.vindixit.foton.supporttables.exception.BDException;
 import com.vindixit.foton.supporttables.repositories.CidadeRepository;
-import com.vindixit.foton.supporttables.util.TransformeCidade;
-import com.vindixit.foton.supporttables.vos.CidadeVO;
+
+
 
 
 @Component("cidadeBO")
@@ -21,23 +21,21 @@ import com.vindixit.foton.supporttables.vos.CidadeVO;
 public class CidadeBO implements ICidadeBO{
 	
 	@Autowired
-	CidadeRepository cidadeRepository;
+	CidadeRepository cidadeRepository;	
 	
-	@Autowired
-	TransformeCidade transformeCidade;
 
 	@Override
-	public CidadeVO cadastraCidade(CidadeVO cidade) throws BDException {
+	public Cidade cadastraCidade(Cidade cidade) throws BDException {
 	
 		Cidade cidadeRetornoPersit = null;
 		try {
-			 cidadeRetornoPersit = cidadeRepository.save(transformeCidade.transformaCidade(cidade));	
+			 cidadeRetornoPersit = cidadeRepository.save(cidade);	
 		} catch (Exception e) {
 			throw new BDException(e.getMessage());
 		}
 		
 		
-		return transformeCidade.transformaCidadeVo(cidadeRetornoPersit);
+		return cidadeRetornoPersit;
 	}
 
 	@Override
@@ -51,22 +49,23 @@ public class CidadeBO implements ICidadeBO{
 	}
 
 	@Override
-	public ArrayList<CidadeVO> buscaTodasCidades() throws BDException {
+	public ArrayList<Cidade> buscaTodasCidades() throws BDException {
 		
 		ArrayList<Cidade> todasCidadesDoBanco =  new ArrayList<Cidade>();
-		ArrayList<CidadeVO> todasCidadesVO =  new ArrayList<CidadeVO>();
+		//ArrayList<CidadeVO> todasCidadesVO =  new ArrayList<CidadeVO>();
 		try {
 			todasCidadesDoBanco = (ArrayList<Cidade>) cidadeRepository.findAll();
 			
-			for (Cidade cidadeDoBanco : todasCidadesDoBanco) {
-				todasCidadesVO.add(transformeCidade.transformaCidadeVo(cidadeDoBanco));
-			}
+			/*
+			 * for (Cidade cidadeDoBanco : todasCidadesDoBanco) {
+			 * todasCidadesVO.add(transformeCidade.transformaCidadeVo(cidadeDoBanco)); }
+			 */
 		} catch (Exception e) {
 			throw new BDException(e.getMessage());			
 		}
 		
 		
-		return todasCidadesVO;
+		return todasCidadesDoBanco;
 	}
 
 }

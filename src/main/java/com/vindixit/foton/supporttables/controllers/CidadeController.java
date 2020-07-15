@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.vindixit.foton.supporttables.bos.CidadeBO;
+import com.vindixit.foton.supporttables.domains.Cidade;
 import com.vindixit.foton.supporttables.exception.BDException;
-import com.vindixit.foton.supporttables.vos.CidadeVO;
-import com.vindixit.foton.supporttables.vos.RetornoVO;
+import com.vindixit.foton.supporttables.json.Response;
 
 
 
@@ -27,55 +27,55 @@ public class CidadeController implements ICidadeController{
 
 	@Override
 	@RequestMapping(value = "/cidade/cadastro", method =  RequestMethod.POST)
-	public ResponseEntity<RetornoVO> cadastraCidade(@RequestParam String nomeCidade, @RequestParam String v10m,@RequestParam String temperatura) throws BDException {
+	public ResponseEntity<Response> cadastraCidade(@RequestParam String nomeCidade, @RequestParam String v10m,@RequestParam String temperatura) throws BDException {
 		
-		CidadeVO cidadeVO = new CidadeVO();
-		RetornoVO retornoVO = new RetornoVO();
+		Cidade cidade = new Cidade();
+		Response response = new Response();
 		try {
-			cidadeVO.setDcNome(nomeCidade);	
-			cidadeVO.setV10m(new Double(v10m));
-			cidadeVO.setDcTemperatura(new Double(temperatura));			
-			retornoVO.setModeloRetorno(cidadeBO.cadastraCidade(cidadeVO));
-			retornoVO.setMensagensRetorno("Cadastro realizado com sucesso!!!");
+			cidade.setDcNome(nomeCidade);	
+			cidade.setV10m(new Double(v10m));
+			cidade.setDcTemperatura(new Double(temperatura));			
+			response.setModeloRetorno(cidadeBO.cadastraCidade(cidade));
+			response.setMensagensRetorno("Cadastro realizado com sucesso!!!");
 			
 		} catch (Exception e) {
-			retornoVO.setMensagensRetorno(e.getMessage());			
+			response.setMensagensRetorno(e.getMessage());			
 		}
 		
 		
-		return ResponseEntity.ok(retornoVO);
+		return ResponseEntity.ok(response);
 	}
 
 	@Override
 	@RequestMapping(value = "/cidade/delete/todas", method =  RequestMethod.DELETE)
-	public ResponseEntity<RetornoVO> deleteTodasCidades() throws BDException {
-		RetornoVO retornoVO = new RetornoVO();
+	public ResponseEntity<Response> deleteTodasCidades() throws BDException {
+		Response response = new Response();
 		
 		try {
 			cidadeBO.deleteTodasCidades();			
-			retornoVO.setMensagensRetorno("Todas as cidades foram apagadas da base de dados!!!");
+			response.setMensagensRetorno("Todas as cidades foram apagadas da base de dados!!!");
 			
 		} catch (Exception e) {
-			retornoVO.setMensagensRetorno(e.getMessage());			
+			response.setMensagensRetorno(e.getMessage());			
 		}		
 		
-		return ResponseEntity.ok(retornoVO);
+		return ResponseEntity.ok(response);
 	}
 
 	@Override
 	@RequestMapping(value = "/cidade/busca/todas", method =  RequestMethod.GET)
-	public ResponseEntity<RetornoVO> buscaTodasCidades() throws BDException {
-		RetornoVO retornoVO = new RetornoVO();
+	public ResponseEntity<Response> buscaTodasCidades() throws BDException {
+		Response response = new Response();
 		
 		try {			
-			retornoVO.setModeloRetorno(cidadeBO.buscaTodasCidades());
-			retornoVO.setMensagensRetorno("Todas as cidades contidas na base de dados!!!");
+			response.setModeloRetorno(cidadeBO.buscaTodasCidades());
+			response.setMensagensRetorno("Todas as cidades contidas na base de dados!!!");
 			
 		} catch (Exception e) {
-			retornoVO.setMensagensRetorno(e.getMessage());			
+			response.setMensagensRetorno(e.getMessage());			
 		}		
 		
-		return ResponseEntity.ok(retornoVO);
+		return ResponseEntity.ok(response);
 		
 	}
 

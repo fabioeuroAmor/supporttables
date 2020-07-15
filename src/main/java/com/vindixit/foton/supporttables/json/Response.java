@@ -1,4 +1,4 @@
-package com.vindixit.foton.supporttables.vos;
+package com.vindixit.foton.supporttables.json;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Kamy Ponce
  *
  */
-public class RetornoVO implements Serializable {
+public class Response implements Serializable {
 	
 
 	private static final long serialVersionUID = 1L;
