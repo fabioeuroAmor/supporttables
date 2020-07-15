@@ -1,7 +1,10 @@
 package com.vindixit.foton.supporttables.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +18,12 @@ import com.vindixit.foton.supporttables.vos.RetornoVO;
 
 @RestController
 @RequestMapping("/api/supporttables/v1")
+@Configuration
+@ComponentScan("com.vindixit.foton.supporttables")
 public class CidadeController implements ICidadeController{
 	
 	@Autowired
-	CidadeBO cidadeBO;
+	CidadeBO cidadeBO = null;
 
 	@Override
 	@RequestMapping(value = "/cidade/cadastro", method =  RequestMethod.POST)
@@ -30,6 +35,7 @@ public class CidadeController implements ICidadeController{
 			cidadeVO.setDcNome(nomeCidade);	
 			cidadeVO.setV10m(new Double(v10m));
 			cidadeVO.setDcTemperatura(new Double(temperatura));
+			//cidadeBO = new CidadeBO();
 			retornoVO.setModeloRetorno(cidadeBO.cadastraCidade(cidadeVO));
 			
 		} catch (Exception e) {

@@ -1,11 +1,13 @@
 package com.vindixit.foton.supporttables.util;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 import com.vindixit.foton.supporttables.domains.Cidade;
 import com.vindixit.foton.supporttables.exception.BDException;
 import com.vindixit.foton.supporttables.vos.CidadeVO;
 
+@Component("transformeCidade")
 public class TransformeCidade {
 	
 	

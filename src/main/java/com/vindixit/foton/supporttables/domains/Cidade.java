@@ -4,8 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 
 @Table(name="TBL_CIDADE")
@@ -14,8 +18,10 @@ public class Cidade implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	@Id	
 	@Column(name="id_cidade")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "id_cidade")
+	@TableGenerator( name = "id_cidade", allocationSize = 1, initialValue = 1)
 	Integer idCidade;
 	
 	@Column(name="dc_temperatura")
