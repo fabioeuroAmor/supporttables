@@ -32,9 +32,7 @@ public class CidadeBO implements ICidadeBO{
 			 cidadeRetornoPersit = cidadeRepository.save(cidade);	
 		} catch (Exception e) {
 			throw new BDException(e.getMessage());
-		}
-		
-		
+		}		
 		return cidadeRetornoPersit;
 	}
 
@@ -52,18 +50,12 @@ public class CidadeBO implements ICidadeBO{
 	public ArrayList<Cidade> buscaTodasCidades() throws BDException {
 		
 		ArrayList<Cidade> todasCidadesDoBanco =  new ArrayList<Cidade>();
-		//ArrayList<CidadeVO> todasCidadesVO =  new ArrayList<CidadeVO>();
+		
 		try {
-			todasCidadesDoBanco = (ArrayList<Cidade>) cidadeRepository.findAll();
-			
-			/*
-			 * for (Cidade cidadeDoBanco : todasCidadesDoBanco) {
-			 * todasCidadesVO.add(transformeCidade.transformaCidadeVo(cidadeDoBanco)); }
-			 */
+			todasCidadesDoBanco = (ArrayList<Cidade>) cidadeRepository.findAll();			
 		} catch (Exception e) {
 			throw new BDException(e.getMessage());			
-		}
-		
+		}		
 		
 		return todasCidadesDoBanco;
 	}
