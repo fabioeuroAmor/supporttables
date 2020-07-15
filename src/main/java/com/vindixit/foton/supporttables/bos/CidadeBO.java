@@ -1,5 +1,7 @@
 package com.vindixit.foton.supporttables.bos;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -46,6 +48,25 @@ public class CidadeBO implements ICidadeBO{
 			System.err.println("Erro: " + e.getMessage());
 		}
 		
+	}
+
+	@Override
+	public ArrayList<CidadeVO> buscaTodasCidades() throws BDException {
+		
+		ArrayList<Cidade> todasCidadesDoBanco =  new ArrayList<Cidade>();
+		ArrayList<CidadeVO> todasCidadesVO =  new ArrayList<CidadeVO>();
+		try {
+			todasCidadesDoBanco = (ArrayList<Cidade>) cidadeRepository.findAll();
+			
+			for (Cidade cidadeDoBanco : todasCidadesDoBanco) {
+				todasCidadesVO.add(transformeCidade.transformaCidadeVo(cidadeDoBanco));
+			}
+		} catch (Exception e) {
+			System.err.println("Erro: " + e.getMessage());
+		}
+		
+		
+		return todasCidadesVO;
 	}
 
 }

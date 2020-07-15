@@ -1,5 +1,7 @@
 package com.vindixit.foton.supporttables.bos;
 
+import java.util.ArrayList;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -11,6 +13,8 @@ public interface ICidadeBO {
 	
 	public CidadeVO cadastraCidade(CidadeVO cidade) throws BDException;
 	
-	public void deleteTodasCidades() throws BDException;
+	public void deleteTodasCidades() throws BDException;	
+	
+	public ArrayList<CidadeVO> buscaTodasCidades() throws BDException;
 
 }

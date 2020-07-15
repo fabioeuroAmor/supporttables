@@ -65,4 +65,22 @@ public class CidadeController implements ICidadeController{
 		return ResponseEntity.ok(retornoVO);
 	}
 
+	@Override
+	@RequestMapping(value = "/cidade/busca/todas", method =  RequestMethod.GET)
+	public ResponseEntity<RetornoVO> buscaTodasCidades() throws BDException {
+		RetornoVO retornoVO = new RetornoVO();
+		
+		try {			
+			retornoVO.setModeloRetorno(cidadeBO.buscaTodasCidades());
+			retornoVO.setMensagensRetorno("Todas as cidades contidas na base de dados!!!");
+			
+		} catch (Exception e) {
+			retornoVO.setMensagensRetorno(e.getMessage());
+			//logger.error("Erro ao consultar o serviço: api/votacao/pauta/{nomePauta} => " + e.getMessage());
+		}		
+		
+		return ResponseEntity.ok(retornoVO);
+		
+	}
+
 }
