@@ -34,14 +34,12 @@ public class CidadeController implements ICidadeController{
 		try {
 			cidadeVO.setDcNome(nomeCidade);	
 			cidadeVO.setV10m(new Double(v10m));
-			cidadeVO.setDcTemperatura(new Double(temperatura));
-			//cidadeBO = new CidadeBO();
+			cidadeVO.setDcTemperatura(new Double(temperatura));			
 			retornoVO.setModeloRetorno(cidadeBO.cadastraCidade(cidadeVO));
 			retornoVO.setMensagensRetorno("Cadastro realizado com sucesso!!!");
 			
 		} catch (Exception e) {
-			retornoVO.setMensagensRetorno(e.getMessage());
-			//logger.error("Erro ao consultar o serviço: api/votacao/pauta/{nomePauta} => " + e.getMessage());
+			retornoVO.setMensagensRetorno(e.getMessage());			
 		}
 		
 		
@@ -58,8 +56,7 @@ public class CidadeController implements ICidadeController{
 			retornoVO.setMensagensRetorno("Todas as cidades foram apagadas da base de dados!!!");
 			
 		} catch (Exception e) {
-			retornoVO.setMensagensRetorno(e.getMessage());
-			//logger.error("Erro ao consultar o serviço: api/votacao/pauta/{nomePauta} => " + e.getMessage());
+			retornoVO.setMensagensRetorno(e.getMessage());			
 		}		
 		
 		return ResponseEntity.ok(retornoVO);
@@ -75,8 +72,7 @@ public class CidadeController implements ICidadeController{
 			retornoVO.setMensagensRetorno("Todas as cidades contidas na base de dados!!!");
 			
 		} catch (Exception e) {
-			retornoVO.setMensagensRetorno(e.getMessage());
-			//logger.error("Erro ao consultar o serviço: api/votacao/pauta/{nomePauta} => " + e.getMessage());
+			retornoVO.setMensagensRetorno(e.getMessage());			
 		}		
 		
 		return ResponseEntity.ok(retornoVO);

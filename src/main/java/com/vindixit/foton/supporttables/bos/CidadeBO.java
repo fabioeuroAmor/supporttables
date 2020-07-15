@@ -33,7 +33,7 @@ public class CidadeBO implements ICidadeBO{
 		try {
 			 cidadeRetornoPersit = cidadeRepository.save(transformeCidade.transformaCidade(cidade));	
 		} catch (Exception e) {
-			System.err.println("Erro: " + e.getMessage());
+			throw new BDException(e.getMessage());
 		}
 		
 		
@@ -45,7 +45,7 @@ public class CidadeBO implements ICidadeBO{
 		try {
 			cidadeRepository.deleteAll();
 		} catch (Exception e) {
-			System.err.println("Erro: " + e.getMessage());
+			throw new BDException(e.getMessage());
 		}
 		
 	}
@@ -62,7 +62,7 @@ public class CidadeBO implements ICidadeBO{
 				todasCidadesVO.add(transformeCidade.transformaCidadeVo(cidadeDoBanco));
 			}
 		} catch (Exception e) {
-			System.err.println("Erro: " + e.getMessage());
+			throw new BDException(e.getMessage());			
 		}
 		
 		
