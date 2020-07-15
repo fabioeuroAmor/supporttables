@@ -37,6 +37,7 @@ public class CidadeController implements ICidadeController{
 			cidadeVO.setDcTemperatura(new Double(temperatura));
 			//cidadeBO = new CidadeBO();
 			retornoVO.setModeloRetorno(cidadeBO.cadastraCidade(cidadeVO));
+			retornoVO.setMensagensRetorno("Cadastro realizado com sucesso!!!");
 			
 		} catch (Exception e) {
 			retornoVO.setMensagensRetorno(e.getMessage());
