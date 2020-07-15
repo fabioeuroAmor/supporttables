@@ -12,5 +12,7 @@ public interface ICidadeController {
 	
 	
 	 public ResponseEntity<RetornoVO> cadastraCidade(@RequestParam String nomeCidade, @RequestParam String v10m, @RequestParam String temperatura) throws BDException;
+	 
+	 public ResponseEntity<RetornoVO> deleteTodasCidades() throws BDException;
 
 }

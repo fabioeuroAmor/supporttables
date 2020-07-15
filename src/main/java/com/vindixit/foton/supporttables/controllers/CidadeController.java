@@ -48,4 +48,21 @@ public class CidadeController implements ICidadeController{
 		return ResponseEntity.ok(retornoVO);
 	}
 
+	@Override
+	@RequestMapping(value = "/cidade/delete/todas", method =  RequestMethod.DELETE)
+	public ResponseEntity<RetornoVO> deleteTodasCidades() throws BDException {
+		RetornoVO retornoVO = new RetornoVO();
+		
+		try {
+			cidadeBO.deleteTodasCidades();			
+			retornoVO.setMensagensRetorno("Todas as cidades foram apagadas da base de dados!!!");
+			
+		} catch (Exception e) {
+			retornoVO.setMensagensRetorno(e.getMessage());
+			//logger.error("Erro ao consultar o serviço: api/votacao/pauta/{nomePauta} => " + e.getMessage());
+		}		
+		
+		return ResponseEntity.ok(retornoVO);
+	}
+
 }

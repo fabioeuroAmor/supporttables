@@ -38,4 +38,14 @@ public class CidadeBO implements ICidadeBO{
 		return transformeCidade.transformaCidadeVo(cidadeRetornoPersit);
 	}
 
+	@Override
+	public void deleteTodasCidades() throws BDException {
+		try {
+			cidadeRepository.deleteAll();
+		} catch (Exception e) {
+			System.err.println("Erro: " + e.getMessage());
+		}
+		
+	}
+
 }
