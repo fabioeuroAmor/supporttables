@@ -38,11 +38,13 @@
 			<artifactId>postgresql</artifactId>
 			<!-- <scope>42.2.14</scope> -->
 		</dependency>
+		<!-- DEPENDENCIA DO SERVIDOR -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
