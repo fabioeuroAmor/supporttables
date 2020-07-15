@@ -8,7 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class SupporttablesApplication {
 	
 	  //Para realizar o deploy em qualquer servidor alem do TOMCAT embargado 
-	  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
 	    return builder.sources(SupporttablesApplication.class);
 	  }
 
