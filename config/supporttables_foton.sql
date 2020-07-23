@@ -3,7 +3,7 @@ CREATE TABLE TBL_CIDADE (
   dc_temperatura DOUBLE precision NULL,
   v10m DOUBLE precision NULL,
   dc_nome VARCHAR(255) NULL
- -- PRIMARY KEY(id_cidade)
+ -- PPRIMARY KEY(id_cidade)
 );
 
 CREATE TABLE TBL_INVERSOR (
