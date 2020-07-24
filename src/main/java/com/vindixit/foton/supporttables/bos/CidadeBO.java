@@ -29,7 +29,8 @@ public class CidadeBO implements ICidadeBO{
 	
 		Cidade cidadeRetornoPersit = null;
 		try {
-			 cidadeRetornoPersit = cidadeRepository.save(cidade);	
+			 cidadeRetornoPersit = cidadeRepository.save(cidade);
+			 //cidadeRetornoPersit.setListaCidadeCadastrada((ArrayList<Cidade>) cidadeRepository.findAll());
 		} catch (Exception e) {
 			throw new BDException(e.getMessage());
 		}		

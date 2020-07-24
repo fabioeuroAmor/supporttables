@@ -1,6 +1,10 @@
 package com.vindixit.foton.supporttables.domains;
 
+
+import javax.persistence.Transient;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+
 
 
 @Table(name="TBL_CIDADE")
@@ -32,6 +37,17 @@ public class Cidade implements Serializable{
 	
 	@Column(name="dc_nome")
 	String dcNome;
+	
+	/*
+	 * @Transient private ArrayList<Cidade> listaCidadeCadastrada = new
+	 * ArrayList<Cidade>();
+	 * 
+	 * public ArrayList<Cidade> getListaCidadeCadastrada() { return
+	 * listaCidadeCadastrada; }
+	 * 
+	 * public void setListaCidadeCadastrada(ArrayList<Cidade> listaCidadeCadastrada)
+	 * { this.listaCidadeCadastrada = listaCidadeCadastrada; }
+	 */
 
 	public Cidade() {
 		super();
@@ -83,7 +99,18 @@ public class Cidade implements Serializable{
 	public String toString() {
 		return "Cidade [idCidade=" + idCidade + ", dcTemperatura=" + dcTemperatura + ", v10m=" + v10m + ", dcNome="
 				+ dcNome + "]";
-	}	
+	}
+	
+
+	/*
+	 * public ArrayList<Cidade> getListaCidadeCadastrada() { return
+	 * listaCidadeCadastrada; }
+	 */
+
+	
+
+	
+	
 	
 
 }
